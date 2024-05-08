@@ -33,7 +33,7 @@ def get_version():
     
 
 def get_long_description():
-    return "See https://github.com/iOLIGO/seqtools"
+    return "See https://github.com/iOLIGO/SeqTools"
 
 def get_install_requires():
     requirements = []
@@ -44,7 +44,7 @@ def get_install_requires():
 
 
 setup(
-    name='oligo',
+    name='SeqTools',
     author='cong wang',
     author_email='2119452560@qq.com',
     version=get_version(),
@@ -52,9 +52,9 @@ setup(
     description='seq tools.',
     long_description=get_long_description(),
     keywords=keywords,
-    url='https://github.com/iOLIGO/seqtools',
+    url='https://github.com/iOLIGO/SeqTools',
     packages=find_packages(),
-    scripts=['scripts/seqtools'],
+    scripts=['scripts/seq'],
     include_package_data=True,
     zip_safe=False,
     classifiers=classifiers,
