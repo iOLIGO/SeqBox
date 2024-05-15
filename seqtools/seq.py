@@ -111,7 +111,7 @@ class SEQ:
         return seq_
     
     
-    def variation(self, replace, seq=None, dict_variation=None):
+    def variation(self, replaces, seq=None, dict_variation=None):
         if len(dict_variation) == 0:
             logger.warning("not found params dict_base, use default dict_base")
             dict_var = {"0":"", "00":"","000":"","0000":"","00000":"","00001":"","00002":"","00003":"","00004":"","00005":"","00006":"","00007":"","00008":"","00009":"","000010":"","000011":"",
@@ -120,7 +120,7 @@ class SEQ:
         else:
             dict_var = dict_variation
         
-        list_replace = [int(l_replace) for l_replace in replace.split(",")]
+        list_replace = [int(l_replace) for l_replace in replaces.split(",")]
 
         list_seq_ = []
         for l_replace in list_replace:
