@@ -1,0 +1,24 @@
+Metadata-Version: 2.1
+Name: SeqTools
+Version: 1.0.0
+Summary: seq tools.
+Home-page: https://github.com/iOLIGO/SeqTools
+Author: cong wang
+Author-email: 2119452560@qq.com
+License: GPLv3
+Keywords: bioinformatics,sequence,tools
+Classifier: Development Status :: 3 - Alpha
+Classifier: Operating System :: POSIX
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Intended Audience :: Science/Research
+Classifier: Topic :: Scientific/Engineering :: Bio-Informatics
+Classifier: Topic :: Scientific/Engineering :: oligo
+Classifier: Topic :: Scientific/Engineering :: probes
+Requires-Python: >=3.7, <4
+
+See https://github.com/iOLIGO/SeqTools

@@ -54,7 +54,7 @@ setup(
     keywords=keywords,
     url='https://github.com/iOLIGO/SeqTools',
     packages=find_packages(),
-    scripts=['scripts/SeqTools'],
+    scripts=['scripts/seq'],
     include_package_data=True,
     zip_safe=False,
     classifiers=classifiers,

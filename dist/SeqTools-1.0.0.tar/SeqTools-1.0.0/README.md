@@ -7,11 +7,3 @@
 
 # seqtools
 seq process tools
-
-## install
-
-github
-
-```
-pip install dist/SeqTools-1.0.0.tar.gz
-```
