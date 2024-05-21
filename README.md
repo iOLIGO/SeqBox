@@ -17,7 +17,7 @@ git clone git@github.com:iOLIGO/SeqTools.git
 pip install dist/SeqTools-1.0.0.tar.gz
 ```
 
-## Attributes
+## attributes
 
 - `seq`: base sequence
 
