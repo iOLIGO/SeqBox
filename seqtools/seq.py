@@ -47,10 +47,10 @@ class SEQ:
                 raise ValueError("params stype err, please check!!!")
     
     def reverse_complement(self, dict_base=None, seq=None, stype=None):
-        if len(dict_base) == 0:
-            logger.warning("not found params dict_base, use default dict_base")
-        else:
+        if dict_base:
             self.dict_base = dict_base
+        else:
+            logger.warning("not found params dict_base, use default dict_base")
         
         if seq:
             if self.seq:
@@ -112,13 +112,13 @@ class SEQ:
     
     
     def variation(self, replaces, seq=None, dict_variation=None):
-        if len(dict_variation) == 0:
+        if dict_variation:
+            dict_var = dict_variation  
+        else:
             logger.warning("not found params dict_base, use default dict_base")
             dict_var = {"0":"", "00":"","000":"","0000":"","00000":"","00001":"","00002":"","00003":"","00004":"","00005":"","00006":"","00007":"","00008":"","00009":"","000010":"","000011":"",
                             "0001":"A","001":"A","01":"A","1":"A","0002":"T","002":"T","02":"T","2":"T","0003":"C","003":"C","03":"C","3":"C","04":"G","004":"G","0004":"G","4":"G",
                             "5":"AA","6":"AT","7":"AC","8":"AG","9":"TA","10":"TT","11":"TC","12":"TG","13":"CA","14":"CT","15":"CC","16":"CG","17":"GA","18":"GT","19":"GC","20":"GG"}
-        else:
-            dict_var = dict_variation
         
         list_replace = [int(l_replace) for l_replace in replaces.split(",")]
 
@@ -151,7 +151,7 @@ class SEQ:
 
         if times:
             times_ = 0
-            while times_ <= times:
+            while times_ <= int(times):
                 times_ += 1
                 random_seq_list = []
                 for base in range(seq_len):
@@ -179,7 +179,7 @@ class SEQ:
         seq_set = set()
         if times:
             times_ = 0
-            while times_ <= times:
+            while times_ <= int(times):
                 times_ += 1
                 random_seq_list = []
                 for base in range(seq_len):

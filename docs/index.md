@@ -1,10 +1,3 @@
-
-<div align="center">
-
-<img src="./docs/imgs/oligo_logo.png">
-
-</div>
-
 # SeqTools
 seq process tools
 
@@ -31,8 +24,8 @@ more info: the three parameters are all optional and can be defined later when u
 
 ## functions
 
-- [generator](./docs/generator.md): sequence generator
-    - `random`：randomly generated sequence, possible repetitions.
-    - `norepeat`：randomly generate non-repeating sequences.
-    - `distance`：randomly generate sequences with [edit distances](https://github.com/ztane/python-Levenshtein) between sequences greater than a fixed value.
-- [variation](./docs/variation.md)：random transformation of sequences, including deletions, additions and mutations.
+- [generator](./generator.md): sequence generator
+    - random：randomly generated sequence, possible repetitions.
+    - norepeat：randomly generate non-repeating sequences.
+    - distance：randomly generate sequences with [edit distances](https://github.com/ztane/python-Levenshtein) between sequences greater than a fixed value.
+- [variation](./variation.md)：random transformation of sequences, including deletions, additions and mutations.

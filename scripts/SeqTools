@@ -8,22 +8,22 @@ def run():
     shared_parser = argparse.ArgumentParser(add_help=False)
     shared_parser.add_argument("-out", "--out_file", dest="out",
                             help="sequence out file with TSV format")
-    shared_parser.add_argument("-od", "--out_dir", dest="outdir", default="./",
+    shared_parser.add_argument("-od", "--out_dir", dest="out_dir", default="./",
                             help="out direction")
     argparser_seq = argparse.ArgumentParser(description="seq tools")
     parse_all = argparser_seq.add_subparsers(dest="cmd")
-    variation = parse_all.add_parser("variation", parents=[shared_parser], help="sequence variation")
+    variation = parse_all.add_parser("variation", parents=[shared_parser], help="sequence variation, like: 'SeqTools -vi seq.tsv -vr 1,17,35, -out variation_seq.tsv'")
     variation.add_argument("-vi", "--vinfile", dest="vin")
     variation.add_argument("-vr", "--vreplace", dest="vreplace", help="replace base number, like: 1,2,3")
     variation.add_argument("-vd", "--vdict", dest="vdict", help="variation dict, like: '1:A-2:T-3:C-4:G'")
 
 
-    generator = parse_all.add_parser("generator", parents=[shared_parser], help="generator sequence")
+    generator = parse_all.add_parser("generator", parents=[shared_parser], help="generator sequence, like: 'SeqTools -gt random -gn 1000 -gl 70'")
     generator.add_argument("-gt", "--gtype", dest="gtype", choices=["random", "norepeat", "distance"])
-    generator.add_argument("-gn", "--gnumber", dest="gnumber", help="sequence number")
+    generator.add_argument("-gn", "--gnumber", dest="gnumber", type=int, help="sequence number")
     generator.add_argument("-gts", "--gtimes", dest="gtimes", default=None, help="Number of runs")
     generator.add_argument("-gc", "--gchar", dest="gchar", default=None, help="generator charset, like: ATCG")
-    generator.add_argument("-gd", "--gdistance", dest="gdistance", default=None, help="distance")
+    generator.add_argument("-gd", "--gdistance", dest="gdistance", type=int, help="distance")
     generator.add_argument("-gl", "--glen", dest="glen", type=int, help="generator sequence length")
 
     args = argparser_seq.parse_args()
@@ -32,7 +32,7 @@ def run():
 
     fout = open(out, "w")
 
-    Seq = SEQ()
+    Seq = SEQ(name="name")
 
     if args.cmd == "variation":
         list_replace = [int(l_replace) for l_replace in args.vreplace.split(",")]
@@ -46,7 +46,10 @@ def run():
             for base in args.vdict.split("-"):
                 dict_var[base.split(":")[0]] = base.split(":")[1]
         else:
-            dict_var =None
+            logger.warning("not found params variation dict, use default variation dict")
+            dict_var = {"0":"", "00":"","000":"","0000":"","00000":"","00001":"","00002":"","00003":"","00004":"","00005":"","00006":"","00007":"","00008":"","00009":"","000010":"","000011":"",
+                            "0001":"A","001":"A","01":"A","1":"A","0002":"T","002":"T","02":"T","2":"T","0003":"C","003":"C","03":"C","3":"C","04":"G","004":"G","0004":"G","4":"G",
+                            "5":"AA","6":"AT","7":"AC","8":"AG","9":"TA","10":"TT","11":"TC","12":"TG","13":"CA","14":"CT","15":"CC","16":"CG","17":"GA","18":"GT","19":"GC","20":"GG"}
             
 
         with open(args.vin, "r") as fv:
@@ -55,23 +58,48 @@ def run():
                     pass
                 else:
                     seq = line.strip()
-                    seqs_list = Seq.variation(replaces=args.vreplace, seq=seq, dict_variation=dict_var)
+                    seqs_list = Seq.variation(replaces=args.vreplace, seq=seq, dict_variation=dict_var).split(",")
                     fout.write(seq + "\t" + "\t".join(seqs_list) + "\n")
     
     elif args.cmd == "generator":
-        fout.write(f"#generator_{args.gtype}:seq_len:{args.glen};char_set:{args.char_set};times:{args.times}")
+        fout.write(f"#generator_{args.gtype}:seq_len:{args.glen}")
+        if args.gchar:
+            fout.write(f";char_set:{args.gchar}")
+        else:
+            fout.write(f";char_set:ATCG")
+        if args.gtimes:
+            fout.write(f";times:{args.gtimes}")
         if args.gtype == "random":
-            for seq in Seq.Gseq_random(seq_len=args.glen, char_set=args.char_set, times=args.gtimes):
-                fout.write(seq)
+            fout.write("\n")
+            Grandom = Seq.Gseq_random(seq_len=args.glen, char_set=args.gchar, times=args.gtimes)
+            number = 0
+            while number < args.gnumber:
+                seq = next(Grandom)
+                fout.write(seq + "\n")
+                number = number + 1
+        
         elif args.gtype == "norepeat":
-            for seq in Seq.Gseq_norepeat(seq_len=args.glen, char_set=args.char_set, times=args.gtimes):
-                fout.write(seq)
+            fout.write("\n")
+            Gnorepeat =  Seq.Gseq_norepeat(seq_len=args.glen, char_set=args.gchar, times=args.gtimes)
+            number = 0
+            while number < args.gnumber:
+                seq = next(Gnorepeat)
+                fout.write(seq + "\n")
+                number = number + 1
         elif args.gtype == "distance":
-            for seq in Seq.Gseq_distance(seq_len=args.glen, distance=args.gdistance, char_set=args.char_set, times=args.gtimes):
-                fout.write(seq)
+            fout.write(f";distance:{args.gdistance}\n")
+            Gdistance = Seq.Gseq_distance(seq_len=args.glen, distance=args.gdistance, char_set=args.gchar, times=args.gtimes)
+            number = 0
+            while number < args.gnumber:
+                seq = next(Gdistance)
+                fout.write(seq + "\n")
+                number = number + 1
         else:
             logger.error("The params(gtype) is error, please check !!!")
             raise ValueError("The params(gtype) is error, please check !!!")
+    
+    else:
+        parse_all.print_help()
 
         
     fout.close()
