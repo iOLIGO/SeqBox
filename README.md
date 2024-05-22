@@ -33,8 +33,8 @@ more info: the three parameters are all optional and can be defined later when u
 
 ## functions
 
-- [generator](./generator.md): sequence generator
-    - [`random`](./generator.md#random)：randomly generated sequence, possible repetitions.
-    - [`norepeat`](./generator.md#norepeat)：randomly generate non-repeating sequences.
-    - [`distance`](./generator.md#distance)：randomly generate sequences with [edit distances](https://github.com/ztane/python-Levenshtein) between sequences greater than a fixed value.
-- [variation](./variation.md)：random transformation of sequences, including deletions, additions and mutations.
+- [generator](./docs/generator.md): sequence generator
+    - [`random`](./docs/generator.md#random)：randomly generated sequence, possible repetitions.
+    - [`norepeat`](./docs/generator.md#norepeat)：randomly generate non-repeating sequences.
+    - [`distance`](./docs/generator.md#distance)：randomly generate sequences with [edit distances](https://github.com/ztane/python-Levenshtein) between sequences greater than a fixed value.
+- [variation](./docs/variation.md)：random transformation of sequences, including deletions, additions and mutations.
