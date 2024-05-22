@@ -12,6 +12,8 @@ pip install dist/SeqTools-1.0.0.tar.gz
 
 ## Attributes
 
+- `name`: sequence name, If not defined, the default is 'name'
+
 - `seq`: base sequence
 
 - `stype`: 'DNA' or 'RNA'
@@ -25,7 +27,7 @@ more info: the three parameters are all optional and can be defined later when u
 ## functions
 
 - [generator](./generator.md): sequence generator
-    - random：randomly generated sequence, possible repetitions.
-    - norepeat：randomly generate non-repeating sequences.
-    - distance：randomly generate sequences with [edit distances](https://github.com/ztane/python-Levenshtein) between sequences greater than a fixed value.
+    - [`random`](./generator.md#random)：randomly generated sequence, possible repetitions.
+    - [`norepeat`](./generator.md#norepeat)：randomly generate non-repeating sequences.
+    - [`distance`](./generator.md#distance)：randomly generate sequences with [edit distances](https://github.com/ztane/python-Levenshtein) between sequences greater than a fixed value.
 - [variation](./variation.md)：random transformation of sequences, including deletions, additions and mutations.
