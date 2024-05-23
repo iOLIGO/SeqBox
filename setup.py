@@ -48,7 +48,7 @@ setup(
     author='cong wang',
     author_email='2119452560@qq.com',
     version=get_version(),
-    license='GPLv3',
+    license='MIT',
     description='seq tools.',
     long_description=get_long_description(),
     keywords=keywords,
