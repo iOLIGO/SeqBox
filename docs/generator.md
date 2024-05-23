@@ -5,7 +5,7 @@ sequence generator
 
 ### usage
 <details>
-    <summary>SeqTools generator</summary>
+    <summary>SeqBox generator</summary>
 
     usage: SeqBox generator [-h] [-out OUT] [-od OUT_DIR]
                             [-gt {random,norepeat,distance}] [-gn GNUMBER]
