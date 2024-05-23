@@ -1,13 +1,12 @@
-# SeqTools
-seq process tools
+# SeqBox
+seq process tools box
 
 ## install
 
-github
+### pip
 
 ```
-git clone git@github.com:iOLIGO/SeqTools.git
-pip install dist/SeqTools-1.0.0.tar.gz
+pip install SeqBox
 ```
 
 ## Attributes

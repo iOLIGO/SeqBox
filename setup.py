@@ -23,7 +23,7 @@ keywords = [
 ]
 
 def get_version():
-    with open("seqtools/__init__.py") as f:
+    with open("seqbox/__init__.py") as f:
         for line in f.readlines():
             m = re.match("__version__ = '([^']+)'", line)
             if m:
@@ -32,7 +32,7 @@ def get_version():
     
 
 def get_long_description():
-    return "See https://github.com/iOLIGO/SeqTools"
+    return "See https://github.com/iOLIGO/SeqBox"
 
 def get_install_requires():
     requirements = []
@@ -43,17 +43,17 @@ def get_install_requires():
 
 
 setup(
-    name='SeqTools',
+    name='SeqBox',
     author='cong wang',
     author_email='2119452560@qq.com',
     version=get_version(),
     license='MIT',
-    description='seq tools.',
+    description='seq tools box.',
     long_description=get_long_description(),
     keywords=keywords,
-    url='https://github.com/iOLIGO/SeqTools',
+    url='https://github.com/iOLIGO/SeqBox',
     packages=find_packages(),
-    scripts=['scripts/SeqTools'],
+    scripts=['scripts/SeqBox'],
     include_package_data=True,
     zip_safe=False,
     classifiers=classifiers,

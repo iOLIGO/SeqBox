@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from seqtools.seq import SEQ
+from seqbox.seq import SEQ
 import argparse
 from loguru import logger
 
@@ -10,15 +10,15 @@ def run():
                             help="sequence out file with TSV format")
     shared_parser.add_argument("-od", "--out_dir", dest="out_dir", default="./",
                             help="out direction")
-    argparser_seq = argparse.ArgumentParser(description="seq tools")
+    argparser_seq = argparse.ArgumentParser(description="seq tools box")
     parse_all = argparser_seq.add_subparsers(dest="cmd")
-    variation = parse_all.add_parser("variation", parents=[shared_parser], help="sequence variation, like: 'SeqTools -vi seq.tsv -vr 1,17,35, -out variation_seq.tsv'")
+    variation = parse_all.add_parser("variation", parents=[shared_parser], help="sequence variation, like: 'SeqBox -vi seq.tsv -vr 1,17,35, -out variation_seq.tsv'")
     variation.add_argument("-vi", "--vinfile", dest="vin")
     variation.add_argument("-vr", "--vreplace", dest="vreplace", help="replace base number, like: 1,2,3")
     variation.add_argument("-vd", "--vdict", dest="vdict", help="variation dict, like: '1:A-2:T-3:C-4:G'")
 
 
-    generator = parse_all.add_parser("generator", parents=[shared_parser], help="generator sequence, like: 'SeqTools -gt random -gn 1000 -gl 70'")
+    generator = parse_all.add_parser("generator", parents=[shared_parser], help="generator sequence, like: 'SeqBox -gt random -gn 1000 -gl 70'")
     generator.add_argument("-gt", "--gtype", dest="gtype", choices=["random", "norepeat", "distance"])
     generator.add_argument("-gn", "--gnumber", dest="gnumber", type=int, help="sequence number")
     generator.add_argument("-gts", "--gtimes", dest="gtimes", default=None, help="Number of runs")

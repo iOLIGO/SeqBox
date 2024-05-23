@@ -6,10 +6,10 @@ random transformation of sequences, including deletions, additions and mutations
 ### usage
 
 <details>
-    <summary>SeqTools variation</summary>
+    <summary>SeqBox variation</summary>
 
-    usage: SeqTools variation [-h] [-out OUT] [-od OUT_DIR] [-vi VIN]
-                          [-vr VREPLACE] [-vd VDICT]
+    usage: SeqBox variation [-h] [-out OUT] [-od OUT_DIR] [-vi VIN] [-vr VREPLACE]
+                            [-vd VDICT]
 
     optional arguments:
     -h, --help            show this help message and exit
@@ -30,12 +30,12 @@ random transformation of sequences, including deletions, additions and mutations
 
 ```python
 
-from seqtools import SEQ
+from seqbox import SEQ
 seq = SEQ(name="test")
 seq.name
 #'test'
 seq.variation(replaces="1,2,3", seq="ATCGTCGTAGTCGTAGCTAGTCGTAGTAGCTAGT")
-#2024-05-21 16:44:48.188 | WARNING  | seqtools.seq:variation:118 - not found params dict_base, use default dict_base
+#2024-05-21 16:44:48.188 | WARNING  | seqbox.seq:variation:118 - not found params dict_base, use default dict_base
 #'ATCGTCGTAGTCGTAGCTAGTCGTAGTAGCTAGT,ACGTCGTAGTCGTACTAGTCGTAGTAGCTAGT,ATCGTCGTAGTGTAGTAGTCGTAGTAGCTAT'
 
 ```
@@ -46,7 +46,7 @@ The main parameters are base variation length(`-vr` or `--vreplace`), input file
 
 ```shell
 
-SeqTools variation -vi test.tsv -out test_variation -vr 1,2,3
+SeqBox variation -vi test.tsv -out test_variation -vr 1,2,3
 
 ```
 

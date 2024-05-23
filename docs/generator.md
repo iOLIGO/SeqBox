@@ -7,9 +7,9 @@ sequence generator
 <details>
     <summary>SeqTools generator</summary>
 
-    usage: SeqTools generator [-h] [-out OUT] [-od OUT_DIR]
-                          [-gt {random,norepeat,distance}] [-gn GNUMBER]
-                          [-gts GTIMES] [-gc GCHAR] [-gd GDISTANCE] [-gl GLEN]
+    usage: SeqBox generator [-h] [-out OUT] [-od OUT_DIR]
+                            [-gt {random,norepeat,distance}] [-gn GNUMBER]
+                            [-gts GTIMES] [-gc GCHAR] [-gd GDISTANCE] [-gl GLEN]
 
     optional arguments:
     -h, --help            show this help message and exit
@@ -38,7 +38,7 @@ Randomly generated sequence, possible repetitions.
 #### API
 
 ```python
-from seqtools import SEQ
+from seqbox import SEQ
 seq = SEQ(name="test")
 seq.name
 # 'test'
@@ -48,7 +48,7 @@ while n <= 10:
     seq = next(Grandom)
     print(seq)
     n = n + 1
-#2024-05-21 15:16:40.176 | WARNING  | seqtools.seq:Gseq_random:150 - not found params char_set, use 'ATCG' with default
+#2024-05-21 15:16:40.176 | WARNING  | seqbox.seq:Gseq_random:150 - not found params char_set, use 'ATCG' with default
 #CATCGTGCATAACTCGGTAGACAGGCAAGGCAACG
 #CACTCGGTCTTGCCATGTGTCCTGTAGGTGACTAA
 #AGGAACCCCCGTAGTAGCCCGACAGCAAGGTTCAT
@@ -87,7 +87,7 @@ The main parameters include the length(`-gl` or `--glen`) and number(`-gn` or `-
 
 ```shell
 
-SeqTools generator -gt random -gn 100 -gl 35 -out test_random
+SeqBox generator -gt random -gn 100 -gl 35 -out test_random
 
 ```
 <details>
@@ -115,7 +115,7 @@ randomly generate non-repeating sequences.
 
 ```python
 
-from seqtools import SEQ
+from seqbox import SEQ
 seq = SEQ(name="test")
 seq.name
 #'test'
@@ -125,7 +125,7 @@ while n <= 10:
     seq = next(Gnorepeat)
     print(seq)
     n = n + 1
-#2024-05-21 16:08:06.289 | WARNING  | seqtools.seq:Gseq_norepeat:177 - not found params char_set, use 'ATCG' with default
+#2024-05-21 16:08:06.289 | WARNING  | seqbox.seq:Gseq_norepeat:177 - not found params char_set, use 'ATCG' with default
 #GGTTGTAACAGCGATAACACGGTTTAACGGACCAG
 #GTTAACTCTAACATATACCTCCTTTCTTCGCCACA
 #GCGTCGGATATAGAAGCTTGCGCCCTAATGTTATA
@@ -164,7 +164,7 @@ The main parameters include the length(`-gl` or `--glen`) and number(`-gn` or `-
 
 ```shell
 
-SeqTools generator -gt norepeat -gn 100 -gl 35 -out test_norepeat
+SeqBox generator -gt norepeat -gn 100 -gl 35 -out test_norepeat
 
 ```
 
@@ -193,7 +193,7 @@ randomly generate sequences with [edit distances](https://github.com/ztane/pytho
 
 ```python
 
-from seqtools import SEQ
+from seqbox import SEQ
 seq = SEQ(name="test")
 seq.name
 #'test'
@@ -203,7 +203,7 @@ while n <= 10:
     seq = next(Gdistance)
     print(seq)
     n = n + 1
-#2024-05-21 16:13:45.385 | WARNING  | seqtools.seq:Gseq_random:150 - not found params char_set, use 'ATCG' with default
+#2024-05-21 16:13:45.385 | WARNING  | seqbox.seq:Gseq_random:150 - not found params char_set, use 'ATCG' with default
 #CCGAGATAAGATACCGCCGCGGGCAACAGCAACCT
 #TGAACGTACTTTTCGTCCTGGCGTCATGGGCTAGC
 #ACTTAATCTTTGTTTCGACTGTGAGTCACCTATGT
@@ -245,7 +245,7 @@ while n < 10:
     seq = next(Gdistance)
     print(seq)
     n = n + 1
-#2024-05-21 16:31:31.828 | WARNING  | seqtools.seq:Gseq_random:150 - not found params char_set, use 'ATCG' with default
+#2024-05-21 16:31:31.828 | WARNING  | seqbox.seq:Gseq_random:150 - not found params char_set, use 'ATCG' with default
 #GGAATATAGCGTTATTCAGACCTAGTAGACAATTC
 #---------------------------------------------------------------------------
 #StopIteration                             Traceback (most recent call last)
@@ -266,7 +266,7 @@ The main parameters include the length(`-gl` or `--glen`), number(`-gn` or `-gnu
 
 ```shell
 
-SeqTools generator -gt distance -gn 100 -gl 35 -gd 5 -out test_distance
+SeqBox generator -gt distance -gn 100 -gl 35 -gd 5 -out test_distance
 
 ```
 
